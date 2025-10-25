@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPath - Find Your Perfect Engineering College</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --secondary: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            --accent: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --success: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            --warning: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --danger: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            --dark: #0f0f23;
+            --darker: #0a0a1a;
+            --light: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --text-muted: #94a3b8;
+            --surface: rgba(15, 15, 35, 0.6);
+            --surface-hover: rgba(15, 15, 35, 0.8);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            --shadow-xl: 0 35px 60px -12px rgba(0, 0, 0, 0.5);
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1e1b4b 30%, #312e81 60%, #1e1b4b 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Creative Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        /* Morphing Gradient Orbs */
+        .gradient-orbs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: orbFloat 20s ease-in-out infinite;
+            opacity: 0.4;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            top: -200px;
+            left: -200px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+            top: 20%;
+            right: -150px;
+            animation-delay: 7s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #6366f1 100%);
+            bottom: -100px;
+            left: 30%;
+            animation-delay: 14s;
+        }
+
+        .orb-4 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%);
+            top: 60%;
+            right: 20%;
+            animation-delay: 3s;
+        }
+
+        /* Floating Knowledge Symbols */
+        .knowledge-symbols {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .symbol {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: symbolFloat 15s ease-in-out infinite;
+            opacity: 0.1;
+            color: #6366f1;
+        }
+
+        .symbol-1 { top: 15%; left: 10%; animation-delay: 0s; }
+        .symbol-2 { top: 25%; right: 15%; animation-delay: 3s; }
+        .symbol-3 { bottom: 30%; left: 20%; animation-delay: 6s; }
+        .symbol-4 { bottom: 20%; right: 25%; animation-delay: 9s; }
+        .symbol-5 { top: 40%; left: 50%; animation-delay: 12s; }
+        .symbol-6 { top: 60%; left: 15%; animation-delay: 2s; }
+        .symbol-7 { top: 70%; right: 10%; animation-delay: 8s; }
+
+        /* DNA Helix Animation */
+        .dna-helix {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 400px;
+            opacity: 0.03;
+        }
+
+        .helix-strand {
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #6366f1, transparent, #8b5cf6, transparent, #06b6d4);
+            border-radius: 2px;
+            animation: helixRotate 20s linear infinite;
+        }
+
+        .helix-strand:nth-child(2) {
+            animation-delay: 10s;
+            right: 0;
+        }
+
+        /* Floating Code Snippets */
+        .code-snippets {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .code-snippet {
+            position: absolute;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: rgba(99, 102, 241, 0.15);
+            animation: codeFloat 25s linear infinite;
+            white-space: nowrap;
+        }
+
+        .code-1 {
+            top: 20%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .code-2 {
+            top: 50%;
+            right: 10%;
+            animation-delay: 8s;
+        }
+
+        .code-3 {
+            bottom: 30%;
+            left: 15%;
+            animation-delay: 16s;
+        }
+
+        /* Circuit Board Pattern */
+        .circuit-board {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.1) 1px, transparent 1px);
+            background-size: 100px 100px, 120px 120px, 80px 80px;
+            animation: circuitPulse 30s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        /* Mathematical Equations */
+        .math-equations {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .equation {
+            position: absolute;
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            color: rgba(139, 92, 246, 0.12);
+            animation: equationFloat 18s ease-in-out infinite;
+        }
+
+        .eq-1 {
+            top: 30%;
+            left: 20%;
+            font-size: 1.2rem;
+            animation-delay: 0s;
+        }
+
+        .eq-2 {
+            bottom: 40%;
+            right: 30%;
+            font-size: 1rem;
+            animation-delay: 6s;
+        }
+
+        .eq-3 {
+            top: 70%;
+            left: 40%;
+            font-size: 1.1rem;
+            animation-delay: 12s;
+        }
+
+        /* Pulsing Energy Lines */
+        .energy-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .energy-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.4), transparent);
+            animation: energyPulse 12s ease-in-out infinite;
+        }
+
+        .line-1 {
+            top: 25%;
+            left: 0;
+            width: 60%;
+            transform: rotate(15deg);
+            animation-delay: 0s;
+        }
+
+        .line-2 {
+            top: 65%;
+            right: 0;
+            width: 70%;
+            transform: rotate(-20deg);
+            animation-delay: 4s;
+        }
+
+        .line-3 {
+            bottom: 35%;
+            left: 20%;
+            width: 50%;
+            transform: rotate(45deg);
+            animation-delay: 8s;
+        }
+
+        /* Enhanced Keyframes */
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -30px) scale(1.1); }
+            50% { transform: translate(-30px, -60px) scale(0.9); }
+            75% { transform: translate(-60px, 30px) scale(1.05); }
+        }
+
+        @keyframes symbolFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.1;
+            }
+            25% { 
+                transform: translateY(-30px) rotate(90deg);
+                opacity: 0.05;
+            }
+            50% { 
+                transform: translateY(-60px) rotate(180deg);
+                opacity: 0.08;
+            }
+            75% { 
+                transform: translateY(-30px) rotate(270deg);
+                opacity: 0.03;
+            }
+        }
+
+        @keyframes helixRotate {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        @keyframes codeFloat {
+            0% { 
+                transform: translateX(-100px) translateY(0);
+                opacity: 0;
+            }
+            10% { opacity: 0.15; }
+            90% { opacity: 0.15; }
+            100% { 
+                transform: translateX(100vw) translateY(-50px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes circuitPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.1; }
+        }
+
+        @keyframes equationFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.12;
+            }
+            33% { 
+                transform: translateY(-25px) rotate(5deg);
+                opacity: 0.06;
+            }
+            66% { 
+                transform: translateY(-40px) rotate(-3deg);
+                opacity: 0.09;
+            }
+        }
+
+        @keyframes energyPulse {
+            0%, 100% { 
+                opacity: 0.4;
+                transform: scaleX(1);
+            }
+            50% { 
+                opacity: 0.1;
+                transform: scaleX(1.5);
+            }
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 35, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: logoShine 3s ease-in-out infinite;
+        }
+
+        @keyframes logoShine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            cursor: pointer;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-secondary);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            transition: left 0.3s ease;
+            z-index: -1;
+            border-radius: var(--border-radius);
+        }
+
+        .nav-item:hover::before,
+        .nav-item.active::before {
+            left: 0;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            transform: translateY(-2px);
+            color: white;
+            border-color: var(--glass-border);
+        }
+
+        /* Enhanced Buttons */
+        .btn {
+            position: relative;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            overflow: hidden;
+            z-index: 1;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            transition: left 0.3s ease;
+            z-index: -1;
+            border-radius: var(--border-radius);
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary::before {
+            background: var(--secondary);
+        }
+
+        .btn-secondary {
+            background: var(--surface);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary::before {
+            background: var(--primary);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-success::before {
+            background: var(--accent);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--glass-border);
+        }
+
+        .btn-outline::before {
+            background: var(--primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 30%, #cbd5e1 70%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            margin-bottom: 3rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.8s forwards;
+        }
+
+        .hero-btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: var(--border-radius-lg);
+            min-width: 180px;
+            font-weight: 600;
+        }
+
+        /* Chatbox Styles */
+        .chatbox-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+        }
+
+        .chatbox-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .chatbox {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 380px;
+            height: 500px;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-xl);
+            z-index: 999;
+            transform: translateY(20px) scale(0.9);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .chatbox.active {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .chatbox-header {
+            background: var(--primary);
+            padding: 1rem 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+        }
+
+        .chatbox-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .chatbox-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .chatbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .chatbox-messages {
+            height: 340px;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chat-message {
+            max-width: 80%;
+            padding: 0.8rem 1rem;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            animation: messageSlide 0.3s ease;
+        }
+
+        .chat-message.user {
+            align-self: flex-end;
+            background: var(--primary);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-message.bot {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border-bottom-left-radius: 4px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .chatbox-input-area {
+            padding: 1rem;
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chatbox-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .chatbox-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .chatbox-input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .chatbox-send {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chatbox-send:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
+        .typing-indicator {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--text-muted);
+            border-radius: 50%;
+            animation: typingDot 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingDot {
+            0%, 60%, 100% { opacity: 0.3; }
+            30% { opacity: 1; }
+        }
+
+        @keyframes messageSlide {
+            from {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            background: var(--surface-hover);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        /* Feature Cards */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(10, 10, 26, 0.9);
+            backdrop-filter: blur(20px);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 6rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer h3 {
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .designed-by {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: var(--primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(50px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-btn {
+                min-width: 280px;
+            }
+
+            .feature-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .chatbox {
+                width: calc(100vw - 40px);
+                right: 20px;
+                left: 20px;
+                height: 450px;
+            }
+
+            .chatbox-messages {
+                height: 290px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 15, 35, 0.5);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-primary { color: var(--text-primary); }
+        .text-secondary { color: var(--text-secondary); }
+        .text-muted { color: var(--text-muted); }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mt-2 { margin-top: 2rem; }
+        .hidden { display: none; }
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-1 { gap: 1rem; }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Creative Animated Background -->
+    <div class="bg-animation">
+        <!-- Morphing Gradient Orbs -->
+        <div class="gradient-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+            <div class="orb orb-4"></div>
+        </div>
+
+        <!-- Floating Knowledge Symbols -->
+        <div class="knowledge-symbols">
+            <div class="symbol symbol-1">∫</div>
+            <div class="symbol symbol-2">∑</div>
+            <div class="symbol symbol-3">π</div>
+            <div class="symbol symbol-4">∆</div>
+            <div class="symbol symbol-5">λ</div>
+            <div class="symbol symbol-6">∞</div>
+            <div class="symbol symbol-7">Ω</div>
+        </div>
+
+        <!-- DNA Helix Animation -->
+        <div class="dna-helix">
+            <div class="helix-strand"></div>
+            <div class="helix-strand"></div>
+        </div>
+
+        <!-- Floating Code Snippets -->
+        <div class="code-snippets">
+            <div class="code-snippet code-1">function calculateGrade() { return 'A+'; }</div>
+            <div class="code-snippet code-2">while(learning) { knowledge++; }</div>
+            <div class="code-snippet code-3">if(dream === true) { achieve(); }</div>
+        </div>
+
+        <!-- Circuit Board Pattern -->
+        <div class="circuit-board"></div>
+
+        <!-- Mathematical Equations -->
+        <div class="math-equations">
+            <div class="equation eq-1">E = mc²</div>
+            <div class="equation eq-2">∮ E⃗ · dA⃗ = Q/ε₀</div>
+            <div class="equation eq-3">∇²ψ + k²ψ = 0</div>
+        </div>
+
+        <!-- Pulsing Energy Lines -->
+        <div class="energy-lines">
+            <div class="energy-line line-1"></div>
+            <div class="energy-line line-2"></div>
+            <div class="energy-line line-3"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">E</div>
+                <span class="logo-text">EduPath</span>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item active">Home</li>
+                <li class="nav-item">College Finder</li>
+                <li class="nav-item">Branch Quiz</li>
+                <li class="nav-item">Community</li>
+                <li class="nav-item">About</li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-outline">Login</button>
+                <button class="btn btn-primary">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Discover Your Perfect Engineering Path</h1>
+                <p>Advanced AI-powered college recommendations for Maharashtra's top engineering institutions. Find your ideal match based on your profile, preferences, and career goals.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary hero-btn">Find Colleges</button>
+                    <button class="btn btn-secondary hero-btn">Discover Branch</button>
+                    <button class="btn btn-success hero-btn">Join Community</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">Smart Matching Algorithm</h3>
+                    <p class="feature-description">Our advanced AI analyzes your academic profile, preferences, and career goals to recommend the most suitable engineering colleges with high accuracy.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🧭</div>
+                    <h3 class="feature-title">Branch Discovery Quiz</h3>
+                    <p class="feature-description">Unsure about your engineering specialization? Take our comprehensive quiz to discover the perfect branch that aligns with your interests and aptitude.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3 class="feature-title">Student Community</h3>
+                    <p class="feature-description">Connect with thousands of engineering aspirants across Maharashtra. Share experiences, get guidance, and build meaningful connections.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Chatbox -->
+    <button class="chatbox-toggle" onclick="toggleChatbox()">💬</button>
+    
+    <div class="chatbox" id="chatbox">
+        <div class="chatbox-header">
+            <div class="chatbox-title">
+                <span>🤖</span>
+                <span>EduPath Assistant</span>
+            </div>
+            <button class="chatbox-close" onclick="toggleChatbox()">✕</button>
+        </div>
+        
+        <div class="chatbox-messages" id="chatMessages">
+            <div class="chat-message bot">
+                <div>Hi! I'm your EduPath assistant 👋</div>
+                <div style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.8;">How can I help you find your perfect engineering college today?</div>
+            </div>
+        </div>
+        
+        <div class="chatbox-input-area">
+            <input 
+                type="text" 
+                class="chatbox-input" 
+                placeholder="Ask about colleges, branches, or admissions..." 
+                id="chatInput"
+                onkeypress="handleChatKeyPress(event)"
+            >
+            <button class="chatbox-send" onclick="sendChatMessage()">➤</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">EduPath</h3>
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1rem;">Empowering Engineering Dreams Across Maharashtra</p>
+                <p style="color: var(--text-muted);">© 2024 EduPath. All rights reserved.</p>
+                <div class="designed-by">
+                    Designed and Developed with Excellence by Tabish & Team
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Chatbox functionality
+        let isChatboxOpen = false;
+        let chatMessages = [];
+
+        // Sample responses for the chatbot
+        const botResponses = {
+            greetings: [
+                "Hello! I'm here to help you with your engineering college search. What would you like to know?",
+                "Hi there! Ready to find your perfect engineering college? Ask me anything!",
+                "Welcome to EduPath! I can help you with college recommendations, branch selection, and more!"
+            ],
+            colleges: [
+                "Here are some top engineering colleges in Maharashtra: IIT Bombay, COEP Pune, VJTI Mumbai, and Government College of Engineering Aurangabad. Would you like specific information about any of these?",
+                "Maharashtra has excellent engineering colleges! Based on your preferences, I can recommend colleges that match your profile. What's your percentile score?",
+                "Looking for college recommendations? I can help! Tell me about your academic background and preferred location."
+            ],
+            branches: [
+                "Popular engineering branches include Computer Engineering, Mechanical Engineering, Electronics, Civil, and Electrical Engineering. Each has unique career opportunities!",
+                "Choosing the right branch is crucial! Computer and IT are in high demand, while Mechanical and Civil offer diverse opportunities. What interests you most?",
+                "Our branch quiz can help you discover the perfect engineering specialization based on your interests and aptitudes!"
+            ],
+            admissions: [
+                "Admission to Maharashtra engineering colleges is primarily through MHT-CET. The cutoffs vary by college and category. What specific information do you need?",
+                "For admissions, you'll need to appear for MHT-CET. Based on your score and category, I can suggest suitable colleges. What's your target score?",
+                "The admission process involves MHT-CET counseling. Higher percentiles get better college choices. Need help with the process?"
+            ],
+            default: [
+                "That's a great question! While I specialize in Maharashtra engineering colleges, I'd be happy to help you explore your options.",
+                "I'm here to help with your engineering education journey! Could you be more specific about what you'd like to know?",
+                "Feel free to ask me about college recommendations, branch selection, admission processes, or anything else related to engineering education!"
+            ]
+        };
+
+        function toggleChatbox() {
+            const chatbox = document.getElementById('chatbox');
+            isChatboxOpen = !isChatboxOpen;
+            chatbox.classList.toggle('active', isChatboxOpen);
+            
+            if (isChatboxOpen) {
+                document.getElementById('chatInput').focus();
+            }
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            // Generate bot response
+            setTimeout(() => {
+                hideTypingIndicator();
+                const response = generateBotResponse(message);
+                addMessage(response, 'bot');
+            }, 1500);
+        }
+
+        function addMessage(message, type) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${type}`;
+            messageDiv.textContent = message;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            chatMessages.push({ message, type });
+        }
+
+        function showTypingIndicator() {
+            const messagesContainer = document.getElementById('chatMessages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'typing-indicator';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <span>EduPath Assistant is typing</span>
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            
+            messagesContainer.appendChild(typingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        function generateBotResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            
+            // Simple keyword-based response system
+            if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
+                return getRandomResponse(botResponses.greetings);
+            } else if (message.includes('college') || message.includes('recommendation') || message.includes('suggest')) {
+                return getRandomResponse(botResponses.colleges);
+            } else if (message.includes('branch') || message.includes('specialization') || message.includes('stream')) {
+                return getRandomResponse(botResponses.branches);
+            } else if (message.includes('admission') || message.includes('cutoff') || message.includes('mht-cet')) {
+                return getRandomResponse(botResponses.admissions);
+            } else {
+                return getRandomResponse(botResponses.default);
+            }
+        }
+
+        function getRandomResponse(responses) {
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add some initial animation delays for elements
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+                card.style.animation = 'fadeInUp 1s ease forwards';
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+            });
+            
+            // Animate feature cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            featureCards.forEach(card => observer.observe(card));
+        });
+
+        // Add some interactive background elements
+        function createFloatingParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '4px';
+            particle.style.height = '4px';
+            particle.style.background = 'rgba(99, 102, 241, 0.6)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '-1';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            
+            document.body.appendChild(particle);
+            
+            const animation = particle.animate([
+                { transform: 'translateY(0px)', opacity: 0 },
+                { transform: 'translateY(-100px)', opacity: 1 },
+                { transform: 'translateY(-' + (window.innerHeight + 100) + 'px)', opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'linear'
+            });
+            
+            animation.addEventListener('finish', () => {
+                particle.remove();
+            });
+        }
+
+        // Create floating particles periodically
+        setInterval(createFloatingParticle, 500);
+
+        // Add mouse interaction effects
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.orb');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 0.5;
+                orb.style.transform = `translate(${x * speed * 50}px, ${y * speed * 50}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
+        

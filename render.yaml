@@ -1,0 +1,46 @@
+# Render manifest to deploy backend (Node web service) and frontend (static site).
+#
+# Notes:
+# - After you connect this repo to Render, the manifest will suggest these services.
+# - You MUST fill the backend environment variable values (DB_* and JWT_SECRET) in the Render dashboard
+#   or via the Render CLI. For the frontend to talk to the deployed backend, set VITE_API_BASE to
+#   https://<your-backend-service>.onrender.com/api (replace <your-backend-service> with the backend service name).
+
+services:
+  - type: web
+    name: edupath-backend
+    env: node
+    plan: free
+    # Build step: install server deps
+    buildCommand: |
+      cd server
+      npm install
+    startCommand: |
+      cd server
+      npm start
+    # Port: Render provides PORT env var automatically; server.js already reads process.env.PORT
+    envVars:
+      - key: DB_HOST
+        value: ""
+      - key: DB_USER
+        value: ""
+      - key: DB_PASSWORD
+        value: ""
+      - key: DB_NAME
+        value: ""
+      - key: JWT_SECRET
+        value: ""
+
+  - type: static
+    name: edupath-frontend
+    env: static
+    plan: free
+    buildCommand: |
+      npm install
+      npm run build
+    # Vite outputs to `dist` by default
+    publishPath: dist
+    envVars:
+      - key: VITE_API_BASE
+        # Replace with the backend's public URL (https://<your-backend-service>.onrender.com/api)
+        value: "https://edupath-backend.onrender.com/api"
